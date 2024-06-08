@@ -1,0 +1,98 @@
+# These variables are shared among all roles.
+
+# Time in seconds to wait for the hosts to be available after the virtual machines are newly created.
+time_out: 600
+
+# User used to log in to virtual machine and used to administer the cluster through cli tools
+user: root
+
+#########################
+# Machine Configuration #
+#########################
+
+# Images tag to be used.
+tag: main
+
+# Image repository to be used.
+repo: "ghcr.io/falcosecurity/kernel-testing"
+
+# Each machine entry requires the following fields
+# name: the name given to the vm;
+# kernel: reference to an OCI image containing a kernel;
+# rootfs: reference to an OCI image used as base rootfs for the vm.
+# arch: architecture of the kernel and base images. (x86_64/aarch64).
+machines:
+  - {name: "amazonlinux2022-5.15", kernel: "{{ repo }}/amazonlinux2022-kernel:5.15-x86_64-{{ tag }}", rootfs: "{{ repo }}/amazonlinux2022-image:5.15-x86_64-{{ tag }}", arch: "x86_64"}  # noqa: yaml[line-length]
+  - {name: "amazonlinux2023-6.1", kernel: "{{ repo }}/amazonlinux2023-kernel:6.1-x86_64-{{ tag }}", rootfs: "{{ repo }}/amazonlinux2023-image:6.1-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "amazonlinux2-4.19", kernel: "{{ repo }}/amazonlinux2-kernel:4.19-x86_64-{{ tag }}", rootfs: "{{ repo }}/amazonlinux2-image:4.19-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "amazonlinux2-5.10", kernel: "{{ repo }}/amazonlinux2-kernel:5.10-x86_64-{{ tag }}", rootfs: "{{ repo }}/amazonlinux2-image:5.10-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "amazonlinux2-5.15", kernel: "{{ repo }}/amazonlinux2-kernel:5.15-x86_64-{{ tag }}", rootfs: "{{ repo }}/amazonlinux2-image:5.15-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "amazonlinux2-5.4", kernel: "{{ repo }}/amazonlinux2-kernel:5.4-x86_64-{{ tag }}", rootfs: "{{ repo }}/amazonlinux2-image:5.4-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "archlinux-6.0", kernel: "{{ repo }}/archlinux-kernel:6.0-x86_64-{{ tag }}", rootfs: "{{ repo }}/archlinux-image:6.0-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "archlinux-6.7", kernel: "{{ repo }}/archlinux-kernel:6.7-x86_64-{{ tag }}", rootfs: "{{ repo }}/archlinux-image:6.7-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "centos-3.10", kernel: "{{ repo }}/centos-kernel:3.10-x86_64-{{ tag }}", rootfs: "{{ repo }}/centos-image:3.10-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "centos-4.18", kernel: "{{ repo }}/centos-kernel:4.18-x86_64-{{ tag }}", rootfs: "{{ repo }}/centos-image:4.18-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "centos-5.14", kernel: "{{ repo }}/centos-kernel:5.14-x86_64-{{ tag }}", rootfs: "{{ repo }}/centos-image:5.14-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "fedora-5.17", kernel: "{{ repo }}/fedora-kernel:5.17-x86_64-{{ tag }}", rootfs: "{{ repo }}/fedora-image:5.17-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "fedora-5.8", kernel: "{{ repo }}/fedora-kernel:5.8-x86_64-{{ tag }}", rootfs: "{{ repo }}/fedora-image:5.8-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "fedora-6.2", kernel: "{{ repo }}/fedora-kernel:6.2-x86_64-{{ tag }}", rootfs: "{{ repo }}/fedora-image:6.2-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "oraclelinux-3.10", kernel: "{{ repo }}/oraclelinux-kernel:3.10-x86_64-{{ tag }}", rootfs: "{{ repo }}/oraclelinux-image:3.10-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "oraclelinux-4.14", kernel: "{{ repo }}/oraclelinux-kernel:4.14-x86_64-{{ tag }}", rootfs: "{{ repo }}/oraclelinux-image:4.14-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "oraclelinux-5.15", kernel: "{{ repo }}/oraclelinux-kernel:5.15-x86_64-{{ tag }}", rootfs: "{{ repo }}/oraclelinux-image:5.15-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "oraclelinux-5.4", kernel: "{{ repo }}/oraclelinux-kernel:5.4-x86_64-{{ tag }}", rootfs: "{{ repo }}/oraclelinux-image:5.4-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "ubuntu-4.15", kernel: "{{ repo }}/ubuntu-kernel:4.15-x86_64-{{ tag }}", rootfs: "{{ repo }}/ubuntu-image:4.15-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "ubuntu-5.8", kernel: "{{ repo }}/ubuntu-kernel:5.8-x86_64-{{ tag }}", rootfs: "{{ repo }}/ubuntu-image:5.8-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "ubuntu-6.5", kernel: "{{ repo }}/ubuntu-kernel:6.5-x86_64-{{ tag }}", rootfs: "{{ repo }}/ubuntu-image:6.5-x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "amazonlinux2022-5.15", kernel: "{{ repo }}/amazonlinux2022-kernel:5.15-aarch64-{{ tag }}", rootfs: "{{ repo }}/amazonlinux2022-image:5.15-aarch64-{{ tag }}", arch: "aarch64"}  # noqa: yaml[line-length]
+  - {name: "amazonlinux2-5.4", kernel: "{{ repo }}/amazonlinux2-kernel:5.4-aarch64-{{ tag }}", rootfs: "{{ repo }}/amazonlinux2-image:5.4-aarch64-{{ tag }}", arch: "aarch64"} # noqa: yaml[line-length]
+  - {name: "fedora-6.2", kernel: "{{ repo }}/fedora-kernel:6.2-aarch64-{{ tag }}", rootfs: "{{ repo }}/fedora-image:6.2-aarch64-{{ tag }}", arch: "aarch64"} # noqa: yaml[line-length]
+  - {name: "oraclelinux-4.14", kernel: "{{ repo }}/oraclelinux-kernel:4.14-aarch64-{{ tag }}", rootfs: "{{ repo }}/oraclelinux-image:4.14-aarch64-{{ tag }}", arch: "aarch64"} # noqa: yaml[line-length]
+  - {name: "oraclelinux-5.15", kernel: "{{ repo }}/oraclelinux-kernel:5.15-aarch64-{{ tag }}", rootfs: "{{ repo }}/oraclelinux-image:5.15-aarch64-{{ tag }}", arch: "aarch64"} # noqa: yaml[line-length]
+  - {name: "ubuntu-6.5", kernel: "{{ repo }}/ubuntu-kernel:6.5-aarch64-{{ tag }}", rootfs: "{{ repo }}/ubuntu-image:6.5-aarch64-{{ tag }}", arch: "aarch64"} # noqa: yaml[line-length]
+
+builders:
+  - {name: "centos-builder", kernel: "weaveworks/ignite-kernel:5.14.16", rootfs: "{{ repo }}/builder:x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "fedora-builder", kernel: "weaveworks/ignite-kernel:5.14.16", rootfs: "{{ repo }}/modernprobe-builder:x86_64-{{ tag }}", arch: "x86_64"} # noqa: yaml[line-length]
+  - {name: "centos-builder", kernel: "weaveworks/ignite-kernel:5.14.16", rootfs: "{{ repo }}/builder:aarch64-{{ tag }}", arch: "aarch64"} # noqa: yaml[line-length]
+  - {name: "fedora-builder", kernel: "weaveworks/ignite-kernel:5.14.16", rootfs: "{{ repo }}/modernprobe-builder:aarch64-{{ tag }}", arch: "aarch64"} # noqa: yaml[line-length]
+
+output_dir: "~/ansible_output"
+# Number of cpus.
+cpus: 2
+# Memory size in GB.
+memory: 2
+
+# run_id is used to identify all the machines generated by a given run of the playbook.
+run_id: "here-goes-the-id"
+
+#####################
+# SSH configuration #
+#####################
+
+# Path to the generated SSH private key file
+ssh_key_path: "/root/.ssh/"
+ssh_key_name: ignite_machines
+
+# Path to the private key
+prv_key_path: "{{ ssh_key_path }}/{{ ssh_key_name }}"
+
+# Path to the public key used to ssh to the machines, if this key does not exist then a new one is generated with the same name
+pub_key_path: "{{ ssh_key_path }}/{{ ssh_key_name }}.pub"
+
+
+# Repositories to be cloned on the local machine and copied to the VMs
+# Each repos entry requires the following fields:
+# name: the folder name where the repo will be cloned. Root folder under ./roles/git-repos/files/repos
+# repo: git, SSH, or HTTP(S) protocol address of the git repository;
+# version: What version of the repository to check out. This can be the literal string HEAD,
+# a branch name, a tag name. It can also be a SHA-1 hash, in which case refspec needs to be
+# specified if the given revision is not already available. If not set the default value is "HEAD".
+# refspec: Add an additional refspec to be fetched. If version is set to a SHA-1 not reachable
+# from any branch or tag, this option may be necessary to specify the ref containing the SHA-1.
+# Uses the same syntax as the git fetch command. An example value could be “refs/meta/config”.
+# Docs ref: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html
+repos:
+  libs: {name: "falcosecurity-libs", repo: "https://github.com/falcosecurity/libs.git", version: "master"}
+
+local_repos_folder: "./roles/git_repos/files/repos"
+remote_repos_folder: "/root"

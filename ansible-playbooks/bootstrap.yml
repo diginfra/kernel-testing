@@ -1,0 +1,8 @@
+---
+# Playbook used to generate the vm configuration files and start them using ignite tool.
+# Check the role for more information
+- name: Play for creating virtual machines
+  hosts: localhost
+  become: false
+  roles:
+   - bootstrap
