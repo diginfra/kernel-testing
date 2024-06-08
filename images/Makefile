@@ -3,7 +3,7 @@ PUSH ?= false
 LATEST ?= false
 TAG ?= main
 CLEANUP ?= false
-REPOSITORY ?= ghcr.io/falcosecurity/kernel-testing
+REPOSITORY ?= ghcr.io/diginfra/kernel-testing
 ARCH ?= $(shell uname -m)
 YAML_FILE ?= images.yaml
 

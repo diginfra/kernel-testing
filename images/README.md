@@ -37,7 +37,7 @@ for kernel images, or
 {{ repo }} /{{ distro }}-image:{{ kernelversion }}-{{ arch }}-{{ tag }}
 ```
 for rootfs images.  
-Eg: `ghcr.io/falcosecurity/kernel-testing/amazonlinux2022-kernel:5.15-x86_64-main`.
+Eg: `ghcr.io/diginfra/kernel-testing/amazonlinux2022-kernel:5.15-x86_64-main`.
 
 ## Usage
 

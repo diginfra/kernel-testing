@@ -1,11 +1,11 @@
-[![Falco kernel tests Repository](https://github.com/falcosecurity/evolution/blob/main/repos/badges/falco-infra-blue.svg)](https://github.com/falcosecurity/evolution/blob/main/REPOSITORIES.md#infra-scope) 
-[![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/falcosecurity/evolution/blob/main/REPOSITORIES.md#incubating)
+[![Diginfra kernel tests Repository](https://github.com/diginfra/evolution/blob/main/repos/badges/diginfra-infra-blue.svg)](https://github.com/diginfra/evolution/blob/main/REPOSITORIES.md#infra-scope) 
+[![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/diginfra/evolution/blob/main/REPOSITORIES.md#incubating)
 ![Architectures](https://img.shields.io/badge/ARCHS-x86__64%7Caarch64-blueviolet?style=for-the-badge)
-[![Latest release](https://img.shields.io/github/v/release/falcosecurity/kernel-testing?style=for-the-badge)](https://github.com/falcosecurity/kernel-testing/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/diginfra/kernel-testing?style=for-the-badge)](https://github.com/diginfra/kernel-testing/releases/latest)
 
-# Falco drivers tests
+# Diginfra drivers tests
 
-This repository automatically runs Falco [scap-open](https://github.com/falcosecurity/libs/tree/master/userspace/libscap/examples/01-open) binary on all supported drivers through Ansible, spawning Firecracker microVMs to test Falco drivers against multiple kernels.  
+This repository automatically runs Diginfra [scap-open](https://github.com/diginfra/libs/tree/master/userspace/libscap/examples/01-open) binary on all supported drivers through Ansible, spawning Firecracker microVMs to test Diginfra drivers against multiple kernels.  
 You can find list of machines being used [here](./ansible-playbooks/group_vars/all/vars.yml#L18).
 
 ## Prerequisites
@@ -56,7 +56,7 @@ ansible-playbook clean-up.yml --ask-become --extra-vars "@/path/to/local/vars.ya
 To better suit the CI usage, a [Github composite action](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) has been developed.  
 Therefore, running kernel-testing in your Github workflow is as easy as adding this step:
 ```
-- uses: falcosecurity/kernel-testing@main
+- uses: diginfra/kernel-testing@main
   # Give it an id to be able to later use its outputs
   id: kernel_tests
   with:
@@ -64,9 +64,9 @@ Therefore, running kernel-testing in your Github workflow is as easy as adding t
     # Default: 'master'
     libsversion: master
     
-    # libs repo to be tested, eg: falcosecurity/libs.
-    # Default: 'falcosecurity/libs'
-    libsrepo: falcosecurity/libs
+    # libs repo to be tested, eg: diginfra/libs.
+    # Default: 'diginfra/libs'
+    libsrepo: diginfra/libs
     
     # Whether to generate matrixes as matrix artifact.
     # Default: false
@@ -85,8 +85,8 @@ Then you can use action outputs to retrieve artifacts:
     path: ${{ steps.kernel_tests.outputs.matrix_output }}
 ```
 
-As an example, see [libs reusable workflow](https://github.com/falcosecurity/libs/blob/master/.github/workflows/reusable_kernel_tests.yaml).
+As an example, see [libs reusable workflow](https://github.com/diginfra/libs/blob/master/.github/workflows/reusable_kernel_tests.yaml).
 
-> __NOTE:__ Since we don't use annotated tags, one cannot use eg: falcosecurity/kernel-testing@v0, but only either exact tag name or master.
+> __NOTE:__ Since we don't use annotated tags, one cannot use eg: diginfra/kernel-testing@v0, but only either exact tag name or master.
 
 > __NOTE:__ Of course, you'll need to run your tests on virtualization-enabled nodes.
