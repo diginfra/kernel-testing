@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 /*
-Copyright (C) 2023 The Falco Authors.
+Copyright (C) 2023 The Diginfra Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ package main
 
 import (
 	"flag"
-	matrix "github.com/falcosecurity/kernel-testing/matrix_gen/pkg/matrix"
+	matrix "github.com/diginfra/kernel-testing/matrix_gen/pkg/matrix"
 	"log"
 )
 

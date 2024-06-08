@@ -1,5 +1,5 @@
 name: 'kernel-testing'
-description: 'Ansible playbooks to provision firecracker VMs and run Falco kernel tests.'
+description: 'Ansible playbooks to provision firecracker VMs and run Diginfra kernel tests.'
 
 inputs:
   libsversion:
@@ -7,9 +7,9 @@ inputs:
     required: false
     default: 'master'
   libsrepo:
-    description: 'libs repo to be tested, eg: falcosecurity/libs'
+    description: 'libs repo to be tested, eg: diginfra/libs'
     required: false
-    default: 'falcosecurity/libs'
+    default: 'diginfra/libs'
   build_matrix:  
     description: 'Whether to generate matrixes as matrix artifact'
     required: false
@@ -35,7 +35,7 @@ runs:
         output_dir: "~/ansible_output_${{ github.run_id }}"
         tag: "$ACTION_REF"
         repos:
-          libs: {name: "falcosecurity-libs", repo: "https://github.com/${{ inputs.libsrepo }}.git", version: "${{ inputs.libsversion }}"}
+          libs: {name: "diginfra-libs", repo: "https://github.com/${{ inputs.libsrepo }}.git", version: "${{ inputs.libsversion }}"}
         EOF
       env:
         ACTION_REF: ${{ github.action_ref }}
